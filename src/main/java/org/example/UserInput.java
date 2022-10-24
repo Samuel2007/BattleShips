@@ -1,78 +1,80 @@
 package org.example;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInput {
-    List<String> submarinePositions = new LinkedList<>();
-    List<String> boatPositions = new LinkedList<>();
-    List<String> destroyerPositions = new LinkedList<>();
-    List<String> carrierPositions = new LinkedList<>();
-    List<String> cargoShipPositions = new LinkedList<>();
+    Scanner scanner;
     public String checkNameCorrection(){
-        Scanner getP1Name = new Scanner(System.in);
+        Scanner getP1Name = scanner;
         String playerInput = getP1Name.nextLine();
-        if(playerInput.length()<=20){
-            return playerInput;
+        while(playerInput.length() >= 20){
+            System.out.println("Name too long");
+            playerInput = getP1Name.nextLine();
         }
-        else{
-            System.out.println("The name is too long, try again");
-            checkNameCorrection();
-            return null;
-        }
+        return playerInput;
     }
     public List<String> getSubmarinePositions(){
-        return submarinePositions;
+        Scanner submarine = scanner;
+        List<String> listOfShips = new ArrayList<>();
+        for(int i = 0; i<=1; i++){
+            System.out.println("Place position " + i);
+            listOfShips.add(getValidShipPosition(submarine));
+        }
+        return listOfShips;
     }
     public List<String> getBoatPositions(){
-        return boatPositions;
+        Scanner boat = scanner;
+        List<String> listOfShips = new ArrayList<>();
+        for(int i = 0; i<=2; i++){
+            System.out.println("Place position " + i);
+            listOfShips.add(getValidShipPosition(boat));
+        }
+        return listOfShips;
     }
     public List<String> getDestroyerPositions(){
-        return destroyerPositions;
+        Scanner destroyer = scanner;
+        List<String> listOfShips = new ArrayList<>();
+        for(int i = 0; i<=3; i++){
+            System.out.println("Place position " + i);
+            listOfShips.add(getValidShipPosition(destroyer));
+        }
+        return listOfShips;
     }
     public List<String> getCarrierPositions(){
-        return carrierPositions;
+        Scanner carrier = scanner;
+        List<String> listOfShips = new ArrayList<>();
+        for(int i = 0; i<=4; i++){
+            System.out.println("Place position " + i);
+            listOfShips.add(getValidShipPosition(carrier));
+        }
+        return listOfShips;
     }
     public List<String> getCargoShipPositions(){
-        return cargoShipPositions;
-    }
-    public void checkShipPositionsCorrection (int ship){
-        Scanner shipScanner = new Scanner(System.in);
-        String[] positionsArray = shipScanner.nextLine().split(" ");
-        for(String shipPosition:positionsArray){
-            String lowerCaseShipPosition = shipPosition.toLowerCase();
-            char[] shipPositionAsCharArray = lowerCaseShipPosition.toCharArray();
-            if(shipPosition.length() == 2){
-                if(shipPositionAsCharArray[0] >= 'a' && shipPositionAsCharArray[0] <= 'i'){
-                    if(shipPositionAsCharArray[1] >= '1' && shipPositionAsCharArray[1] <= '9'){
-                        switch(ship){
-                            case 1:
-                                submarinePositions.add(lowerCaseShipPosition);
-                            case 2:
-                                boatPositions.add(lowerCaseShipPosition);
-                            case 3:
-                                destroyerPositions.add(lowerCaseShipPosition);
-                            case 4:
-                                carrierPositions.add(lowerCaseShipPosition);
-                            case 5:
-                                cargoShipPositions.add(lowerCaseShipPosition);
-                        }
-                    }
-                    else{
-                        System.out.println("False ship coordinate(wrong number), try again");
-                        checkShipPositionsCorrection(ship);
-                    }
-                }
-                else{
-                    System.out.println("False ship coordinate(wrong letter), try again");
-                    checkShipPositionsCorrection(ship);
-                }
-            }
-            else{
-                System.out.println("False ship coordinate(wrong length), try again");
-                checkShipPositionsCorrection(ship);
-            }
+        Scanner cargoShipPosition = scanner;
+        List<String> listOfShips = new ArrayList<>();
+        for(int i = 0; i<=5; i++){
+            System.out.println("Place position " + i);
+            listOfShips.add(getValidShipPosition(cargoShipPosition));
         }
+        return listOfShips;
+    }
+    public String getValidShipPosition (Scanner shipScanner){
+        String shipPosition = shipScanner.nextLine();
+        char letter = shipPosition.toCharArray()[0];
+        char number = shipPosition.toCharArray()[1];
+        while(shipPosition.length() == 2){
+            System.out.println("Wrong position length");
+            shipPosition = shipScanner.nextLine();
+        }
+        while(letter <= 'a' || letter >= 'i'||number <= '1' || number >= '9'){
+            System.out.println("Wrong ship coordinate, place ship with correct pattern (A1)");
+            shipPosition = shipScanner.nextLine();
+            letter = shipPosition.toCharArray()[0];
+            number = shipPosition.toCharArray()[1];
+
+        }
+        return shipPosition;
     }
 }
