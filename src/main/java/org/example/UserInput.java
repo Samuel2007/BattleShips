@@ -18,8 +18,9 @@ public class UserInput {
     public List<String> getSubmarinePositions(){
         Scanner submarine = scanner;
         List<String> listOfShips = new ArrayList<>();
+        System.out.println("Place your submarine (1 position)");
         for(int i = 0; i<=1; i++){
-            System.out.println("Place position " + i);
+            System.out.println("Place position " + i+1);
             listOfShips.add(getValidShipPosition(submarine));
         }
         return listOfShips;
@@ -27,8 +28,9 @@ public class UserInput {
     public List<String> getBoatPositions(){
         Scanner boat = scanner;
         List<String> listOfShips = new ArrayList<>();
+        System.out.println("Place your boat (2 positions)");
         for(int i = 0; i<=2; i++){
-            System.out.println("Place position " + i);
+            System.out.println("Place position " + i+1);
             listOfShips.add(getValidShipPosition(boat));
         }
         return listOfShips;
@@ -36,8 +38,10 @@ public class UserInput {
     public List<String> getDestroyerPositions(){
         Scanner destroyer = scanner;
         List<String> listOfShips = new ArrayList<>();
+        System.out.println("Place your destroyer (3 positions)");
+
         for(int i = 0; i<=3; i++){
-            System.out.println("Place position " + i);
+            System.out.println("Place position " + i+1);
             listOfShips.add(getValidShipPosition(destroyer));
         }
         return listOfShips;
@@ -45,18 +49,21 @@ public class UserInput {
     public List<String> getCarrierPositions(){
         Scanner carrier = scanner;
         List<String> listOfShips = new ArrayList<>();
+        System.out.println("Place your carrier (4 positions)");
+
         for(int i = 0; i<=4; i++){
-            System.out.println("Place position " + i);
+            System.out.println("Place position " + i+1);
             listOfShips.add(getValidShipPosition(carrier));
         }
         return listOfShips;
     }
     public List<String> getCargoShipPositions(){
-        Scanner cargoShipPosition = scanner;
+        Scanner cargoShip = scanner;
         List<String> listOfShips = new ArrayList<>();
+        System.out.println("Place your cargo ship (5 positions)");
         for(int i = 0; i<=5; i++){
-            System.out.println("Place position " + i);
-            listOfShips.add(getValidShipPosition(cargoShipPosition));
+            System.out.println("Place position " + i+1);
+            listOfShips.add(getValidShipPosition(cargoShip));
         }
         return listOfShips;
     }

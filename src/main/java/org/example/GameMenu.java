@@ -36,7 +36,6 @@ public class GameMenu {
             //Player.getPlayer1().setPlayer1Name(p1Name);
             player1 = new Player(p1Name,shipCreator.createShips());
             player2 = new Player("Bob",shipCreator.createShips());
-            shipsPositions.getShipsPositions();
             game.startGame(player1,player2);
             /*computer.player2Ships.set();
             return new Game(player1,player2);*/
@@ -50,10 +49,6 @@ public class GameMenu {
             getP2Name = new Scanner(System.in);
             p2Name = getP2Name.nextLine();
             Player player2 = new Player(p1Name,shipCreator.createShips());
-            System.out.println("Player 1 place your ships");
-            shipsPositions.getShipsPositions();
-            System.out.println("Player 2 place your ships");
-            shipsPositions.getShipsPositions();
             game.startGame(player1,player2);
         }
         else{
