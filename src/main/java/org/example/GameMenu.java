@@ -24,22 +24,14 @@ public class GameMenu {
         Scanner gameModeScanner = new Scanner(System.in);
         gameMode = gameModeScanner.nextLine();
         ShipCreator shipCreator = new ShipCreator();
-        Player shipsPositions = new Player();
         UserInput checkName = new UserInput();
         Game game = new Game();
         if(gameMode.equals("1")){
-            /*Random randomNumber = new Random();
-            Random randomLetter = new Random();
-            Player computer = new Player();*/
             System.out.println("Player 1 name");
             p1Name = checkName.checkNameCorrection();
-            //Player.getPlayer1().setPlayer1Name(p1Name);
             player1 = new Player(p1Name,shipCreator.createShips());
             player2 = new Player("Bob",shipCreator.createShips());
-            shipsPositions.getShipsPositions();
             game.startGame(player1,player2);
-            /*computer.player2Ships.set();
-            return new Game(player1,player2);*/
         }
         else if(gameMode.equals("2")){
             System.out.println("Player 1 name");
@@ -50,10 +42,6 @@ public class GameMenu {
             getP2Name = new Scanner(System.in);
             p2Name = getP2Name.nextLine();
             Player player2 = new Player(p1Name,shipCreator.createShips());
-            System.out.println("Player 1 place your ships");
-            shipsPositions.getShipsPositions();
-            System.out.println("Player 2 place your ships");
-            shipsPositions.getShipsPositions();
             game.startGame(player1,player2);
         }
         else{
