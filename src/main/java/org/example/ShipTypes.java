@@ -1,8 +1,5 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum ShipTypes {
     SUBMARINE(1),
     BOAT(2),

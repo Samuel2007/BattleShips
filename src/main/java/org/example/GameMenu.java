@@ -26,8 +26,9 @@ public class GameMenu {
             Player computer = new Player();*/
             System.out.println("Player 1 name");
             p1Name = userInput.checkNameCorrection();
-            //Player.getPlayer1().setPlayer1Name(p1Name);
+            System.out.println("Player 1");
             player1 = new Player(p1Name,shipCreator.createShips());
+            System.out.println("Player 2");
             player2 = new Player("Bob",shipCreator.createShips());
             game.startGame(player1,player2);
             /*computer.player2Ships.set();
@@ -38,11 +39,13 @@ public class GameMenu {
             getP1Name = new Scanner(System.in);
             p1Name = getP1Name.nextLine();
             p1Name = userInput.checkNameCorrection();
+            System.out.println("Player 1");
             Player player1 = new Player(p1Name,shipCreator.createShips());
             System.out.println("Player 2 name");
             getP2Name = new Scanner(System.in);
             p2Name = getP2Name.nextLine();
             p2Name = userInput.checkNameCorrection();
+            System.out.println("Player 2");
             Player player2 = new Player(p1Name,shipCreator.createShips());
             game.startGame(player1,player2);
         }

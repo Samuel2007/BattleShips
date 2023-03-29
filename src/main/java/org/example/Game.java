@@ -5,52 +5,52 @@ import java.util.*;
 public class Game {
     boolean gameOn = true;
     public void startGame(Player player1,Player player2){
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        List<String> listOfYourShipsPositions = new ArrayList<>();
-        List<String> listOfEnemyShipsPositions = new ArrayList<>();
-        char randomLetter = (char)(random.nextInt('i'-'a')+'a');
-        int randomNumber = random.nextInt(9-1)+1;
-        String enemyAttackPosition = String.valueOf(randomLetter + randomNumber);
+        String attackedPosition;
+        List<Ship> listOfYourShips = player1.playerShips;
+        List<Ship> listOfEnemyShips = player2.playerShips;
+        List<String> listOfYourShipsHitPositions = new ArrayList<>();
+        List<String> listOfEnemyShipsHitPositions = new ArrayList<>();
 
-        for(Ship playerShip:player1.playerShips){
-            listOfYourShipsPositions.addAll(playerShip.position);
-        }
-        for(Ship enemyShip:player2.playerShips){
-            listOfEnemyShipsPositions.addAll(enemyShip.position);
-        }
-        while(player1.playerShips.size() > 0 && player2.playerShips.size() > 0 && gameOn) {
-            System.out.println("Attack");
-            String findShip = scanner.toString();
-            if(listOfEnemyShipsPositions.contains(findShip)){
-                System.out.println("You Hit");
-                listOfEnemyShipsPositions.remove(findShip);
+        List<String> listOfYourShipsPositions = new ArrayList<>(Arrays.asList("a1","b1","b2","c1","c2","c3","d1","d2","d3","d4","e1","e2","e3","e4","e5"));
+        /*TODO: remember this line
+        for(Ship ship: listOfYourShips){
+            listOfYourShipsPositions.addAll(ship.position);
+        }*/
+
+        List<String> listOfEnemyShipsPositions = new ArrayList<>(Arrays.asList("a1","b1","b2","c1","c2","c3","d1","d2","d3","d4","e1","e2","e3","e4","e5"));
+        /*TODO: remember this line
+        for(Ship ship: listOfEnemyShips){
+            listOfEnemyShipsPositions.addAll(ship.position);
+        }*/
+        UserInput userInput = new UserInput();
+        while(listOfEnemyShipsHitPositions!=listOfEnemyShipsPositions || listOfYourShipsHitPositions!=listOfYourShipsPositions){
+            System.out.println("Which tile to attack, "+player1.playerName+"?");
+            attackedPosition = userInput.getValidShipPosition();
+            if(listOfEnemyShipsPositions.contains(attackedPosition)){
+                System.out.println("You hit!");
+                listOfEnemyShipsHitPositions.add(attackedPosition);
             }
             else{
-                System.out.println("You Missed");
+                System.out.println("You missed");
             }
-            if(listOfYourShipsPositions.contains(enemyAttackPosition)){
-                System.out.println("Enemy Hit");
-                listOfYourShipsPositions.remove(enemyAttackPosition);
+            System.out.println("Which tile to attack, "+player2.playerName+"?");
+            attackedPosition = userInput.getValidShipPosition();
+            if(listOfYourShipsPositions.contains(attackedPosition)){
+                System.out.println("You hit!");
+                listOfYourShipsHitPositions.add(attackedPosition);
             }
             else{
-                System.out.println("Enemy Missed");
+                System.out.println("You missed");
             }
         }
-        if(player1.playerShips.size() == 0){
-            System.out.println("You Lost!");
-            System.out.println("Play Again?");
-            String playAgain = scanner.toString();
-            if(playAgain.equals("yes")){
-                GameMenu gameMenu = new GameMenu();
-                gameMenu.gameSetup();
-            }
-            if(playAgain.equals("no")){
-                System.exit(0);
-            }
+        if(listOfEnemyShipsHitPositions==listOfEnemyShipsPositions){
+            System.out.println(player1.playerName+"Wins!");
+        }
+        else if (listOfYourShipsHitPositions==listOfYourShipsPositions) {
+            System.out.println(player2.playerName+"Wins!");
         }
         else{
-            System.out.println("You Won!");
+            System.out.println("It's a draw");
         }
     }
 }
