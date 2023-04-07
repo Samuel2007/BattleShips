@@ -29,7 +29,7 @@ public class GameMenu {
             System.out.println("Player 1");
             player1 = new Player(p1Name,shipCreator.createShips());
             System.out.println("Player 2");
-            player2 = new Player("Bob",shipCreator.createShips());
+            player2 = new Player("Bob",shipCreator.createShipsForBot());
             game.startGame(player1,player2);
             /*computer.player2Ships.set();
             return new Game(player1,player2);*/

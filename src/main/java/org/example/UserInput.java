@@ -18,7 +18,7 @@ public class UserInput {
     }
 
     public List<String> getShipPositions(List<String> listOfAllShipsPositions, int shipLength) {
-        //TODO: discus double input asking problem, create main game
+        //TODO: discus double input asking problem
         List<String> listOfShipPositions;
         int repeat = 0;
         if(shipLength == 1){
