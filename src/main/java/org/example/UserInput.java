@@ -42,7 +42,7 @@ public class UserInput {
         while(  input.length != 2 ||
                 (input[0] < 'a' || input[0] > 'i') ||
                 (input[1] < '1' || input[1] > '9')){
-            System.out.println("Wrong coordinates(correct pattern \"A1\")");
+            System.out.println("Wrong coordinates,correct pattern \"A1\"(a-i and from 1-9)");
             input = scanner.nextLine().toLowerCase().toCharArray();
         }
         /*String inputWithNoSpaces = input.strip();
@@ -70,7 +70,7 @@ public class UserInput {
                 shipPositionRangeAsCharArray[2] != '-' ||
                 (shipPositionRangeAsCharArray[3] < 'a' || shipPositionRangeAsCharArray[3] > 'i') ||
                 (shipPositionRangeAsCharArray[4] < '1' || shipPositionRangeAsCharArray[4] > '9') ){
-            System.out.println("Change ship position(correct pattern \"A1-A2\")");
+            System.out.println("Change ship position,correct pattern \"A1-A2\"(a-i and 1-9)");
             shipPositionRangeAsCharArray = scanner.nextLine().toLowerCase().replaceAll("\\s","").toCharArray();
         }
         shipPositionRange = String.valueOf(shipPositionRangeAsCharArray).split("-");
@@ -89,7 +89,7 @@ public class UserInput {
     private List<String> getPositionsFromPositionRange(String[] shipPositionRange) {
         List<String> shipPositionsList = new ArrayList<>();
         while (shipPositionRange.length != 2) {
-            System.out.println("Change ship position(correct pattern \"A1-A2\")");
+            System.out.println("Change ship position,correct pattern \"A1-A2\"(a-i and 1-9)");
             shipPositionRange = scanner.nextLine().toLowerCase().split("-");
         }
         String starPosition = shipPositionRange[0];
