@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class UserInput {
     Scanner scanner = new Scanner(System.in);
-
     public String checkNameCorrection() {
         String playerInput = scanner.nextLine();
         while (playerInput.length() >= 20) {
@@ -16,7 +15,6 @@ public class UserInput {
         }
         return playerInput;
     }
-
     public List<String> getShipPositions(List<String> listOfAllShipsPositions, int shipLength) {
         //TODO: discus double input asking problem
         List<String> listOfShipPositions;
@@ -47,7 +45,6 @@ public class UserInput {
         }
         return String.valueOf(input);
     }
-
     private String[] getValidPositionRange(){
         String[] shipPositionRange;
         char[] shipPositionRangeAsCharArray = scanner.nextLine().toLowerCase().replaceAll("\\s","").toCharArray();
@@ -72,7 +69,6 @@ public class UserInput {
         }
         return listOfShipPositions;
     }
-
     private List<String> getPositionsFromPositionRange(String[] shipPositionRange) {
         List<String> shipPositionsList = new ArrayList<>();
         while (shipPositionRange.length != 2) {
