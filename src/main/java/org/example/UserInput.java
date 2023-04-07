@@ -45,19 +45,6 @@ public class UserInput {
             System.out.println("Wrong coordinates,correct pattern \"A1\"(a-i and from 1-9)");
             input = scanner.nextLine().toLowerCase().toCharArray();
         }
-        /*String inputWithNoSpaces = input.strip();
-        while (inputWithNoSpaces.length() != 2) {
-            System.out.println("Wrong length(correct pattern \"A1\")");
-            inputWithNoSpaces = scanner.nextLine();
-        }
-        char letter = inputWithNoSpaces.toLowerCase().toCharArray()[0];
-        char number = inputWithNoSpaces.toCharArray()[1];
-        while ((letter < 'a' || letter > 'i') || (number < '1' || number > '9') || inputWithNoSpaces.length() != 2) {
-            System.out.println("Change ship position(correct pattern \"A1\")");
-            inputWithNoSpaces = scanner.nextLine();
-            letter = inputWithNoSpaces.toUpperCase().toCharArray()[0];
-            number = inputWithNoSpaces.toCharArray()[1];
-        }*/
         return String.valueOf(input);
     }
 
@@ -120,40 +107,6 @@ public class UserInput {
         }
         return isAvailable;
     }
-    /*public boolean isShipPositionRangeValid(String[] input) {
-        for(String shipPosition: input){
-            while(shipPosition.length() != 2) {
-                System.out.println("Wrong length");
-                shipPosition = scanner.nextLine();
-            }
-            char letter = shipPosition.toLowerCase().toCharArray()[0];
-            char number = shipPosition.toCharArray()[1];
-            while ((letter < 'a' || letter > 'i') || (number < '1' || number > '9')) {
-                System.out.println("Change ship position(correct pattern \"A1\")");
-                shipPosition = scanner.nextLine();
-                while (shipPosition.length() != 2) {
-                    System.out.println("Wrong length");
-                    shipPosition = scanner.nextLine();
-                }
-                letter = shipPosition.toUpperCase().toCharArray()[0];
-                number = shipPosition.toCharArray()[1];
-            }
-            return false;
-        }
-        return true;
-    }
-    public boolean checkShipPlacementCorrection(List<String> listOfShipPositions, String shipPosition){
-        char listOfShipPositionsLetter = Arrays.toString(listOfShipPositions.toArray()).toLowerCase().toCharArray()[0];
-        int listOfShipPositionsNumber = Arrays.toString(listOfShipPositions.toArray()).toCharArray()[1];
-        char shipPositionLetter = shipPosition.toLowerCase().toCharArray()[0];
-        int shipPositionNumber = shipPosition.toCharArray()[1];
-        if(shipPositionNumber == (listOfShipPositionsNumber+1) || shipPositionNumber == (listOfShipPositionsNumber-1)
-                || shipPositionLetter == (listOfShipPositionsLetter+1) || shipPositionLetter == (listOfShipPositionsLetter-1)){
-            return true;
-        }
-        return true;
-    }*/
-
     public String getGameMode() {
         String gameMode = scanner.nextLine();
         while (!"1".equals(gameMode) && !"2".equals(gameMode)) {
